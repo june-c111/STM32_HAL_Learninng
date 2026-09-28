@@ -1,8 +1,8 @@
 version: "4.1"
 name: Template
 type: ARM
-deviceName: null
-packDir: null
+deviceName: STM32F103C8
+packDir: .pack/Keil/STM32F1xx_DFP.2.3.0
 srcDirs:
   - Core
   - Drivers
@@ -21,6 +21,7 @@ targets:
         - DEBUG
         - USE_HAL_DRIVER
         - STM32F103xB
+        - STM32F10X_MD
       incList:
         - Core/Inc
         - Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
@@ -148,4 +149,9 @@ targets:
         otherCmds: ""
         proType: 1
         speed: 8000
-    uploader: JLink
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: ""
+        interface: stlink
+        target: stm32f1x
+    uploader: OpenOCD
